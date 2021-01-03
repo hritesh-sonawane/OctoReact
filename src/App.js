@@ -29,8 +29,9 @@ class App extends Component {
   };
 
   deletePersonHandler = (personIndex) => {
-    const persons = this.state.persons;
-    persons.splice(personIndex, 1);
+    // const persons = this.state.persons.slice();   // slice() makes a copy of persons
+    const persons = [...this.state.persons]   // es6 version
+    persons.splice(personIndex, 1);   // splice() adds/deletes item in the array
     this.setState({persons: persons})
   };
 
@@ -42,7 +43,7 @@ class App extends Component {
       persons = (
         <div>
           { 
-            this.state.persons.map((person, index) => {   // JS list O/P
+            this.state.persons.map((person, index) => {
               return <Person 
                         name={person.name} 
                         age={person.age} 
