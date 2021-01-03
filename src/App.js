@@ -43,6 +43,35 @@ class App extends Component {
 
   render() {
 
+    let persons = null;
+
+    if (this.state.showPersons) {
+      persons = (
+        <div>
+          <Person 
+            name = { this.state.persons[0].name } 
+            age = { this.state.persons[0].age }
+            click = { this.switchNameHandler.bind(this, 'Sakura!') }
+          >
+            Skill: Genjutsu
+          </Person>
+          <Person 
+            name = { this.state.persons[1].name } 
+            age = { this.state.persons[1].age }
+          >
+            Skill: Ninjutsu
+          </Person>
+          <Person 
+            name = { this.state.persons[2].name } 
+            age = { this.state.persons[2].age }
+            change = { this.nameChangeHandler }
+          >
+            Skill: Taijutsu
+          </Person>
+        </div>
+      );
+    };
+
     const style = {
       backgroundColor: 'white',
       font: 'inherit',
@@ -63,30 +92,7 @@ class App extends Component {
         </button>
         <br/>
         <br/>
-        { this.state.showPersons ? 
-          <div>
-            <Person 
-              name = { this.state.persons[0].name } 
-              age = { this.state.persons[0].age }
-              click = { this.switchNameHandler.bind(this, 'Sakura!') }
-            >
-              Skill: Genjutsu
-            </Person>
-            <Person 
-              name = { this.state.persons[1].name } 
-              age = { this.state.persons[1].age }
-            >
-              Skill: Ninjutsu
-            </Person>
-            <Person 
-              name = { this.state.persons[2].name } 
-              age = { this.state.persons[2].age }
-              change = { this.nameChangeHandler }
-            >
-              Skill: Taijutsu
-            </Person>
-          </div> : null
-        }
+        { persons }
       </div>
     );
   }
