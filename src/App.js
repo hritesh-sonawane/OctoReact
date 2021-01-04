@@ -3,7 +3,6 @@ import './App.css';
 import Person from './Person/Person';
 import Validation from './Validation/Validation';
 import Char from './Char/Char';
-import Radium, { StyleRoot } from 'radium';
 
 class App extends Component {
   state = {
@@ -111,7 +110,6 @@ class App extends Component {
 
     // JSX
     return (
-      <StyleRoot>
         <div className="App">
           <h1>Hi, I'm a React App!</h1>
           <p className={classes.join(' ')}>I'm awesome!</p>
@@ -137,9 +135,8 @@ class App extends Component {
           />
           {charList}
         </div>
-      </StyleRoot>
     );
   }
 }
 
-export default Radium(App);   // higher order cmpnt
+export default App;   // higher order cmpnt
