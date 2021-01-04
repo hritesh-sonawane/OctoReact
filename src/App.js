@@ -3,7 +3,7 @@ import './App.css';
 import Person from './Person/Person';
 import Validation from './Validation/Validation';
 import Char from './Char/Char';
-import Radium from 'radium';
+import Radium, { StyleRoot } from 'radium';
 
 class App extends Component {
   state = {
@@ -111,31 +111,33 @@ class App extends Component {
 
     // JSX
     return (
-      <div className="App">
-        <h1>Hi, I'm a React App!</h1>
-        <p className={classes.join(' ')}>I'm awesome!</p>
-        <button 
-          style={ style }
-          onClick={ this.togglePersonHandler }
-        >
-          Toggle Ninjas
-        </button>
-        <br/>
-        <br/>
-        { persons }
-        <br/>
-        <hr/>
-        <input 
-          type="text" 
-          onChange={this.inputChangeHandler}
-          value={this.state.userInput}  
-        />
-        <p>{this.state.userInput}</p>
-        <Validation 
-          inputLength={this.state.userInput.length}
-        />
-        {charList}
-      </div>
+      <StyleRoot>
+        <div className="App">
+          <h1>Hi, I'm a React App!</h1>
+          <p className={classes.join(' ')}>I'm awesome!</p>
+          <button 
+            style={ style }
+            onClick={ this.togglePersonHandler }
+          >
+            Toggle Ninjas
+          </button>
+          <br/>
+          <br/>
+          { persons }
+          <br/>
+          <hr/>
+          <input 
+            type="text" 
+            onChange={this.inputChangeHandler}
+            value={this.state.userInput}  
+          />
+          <p>{this.state.userInput}</p>
+          <Validation 
+            inputLength={this.state.userInput.length}
+          />
+          {charList}
+        </div>
+      </StyleRoot>
     );
   }
 }
