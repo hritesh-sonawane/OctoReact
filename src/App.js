@@ -28,20 +28,15 @@ class App extends Component {
   };
 
   nameChangeHandler = (event, id) => {
-
     const personIndex = this.state.persons.findIndex(p => {
       return p.id === id;
     });
-
     const person = {
       ...this.state.persons[personIndex]
     };
-
     person.name = event.target.value;
-
     const persons = [...this.state.persons];
     persons[personIndex] = person;
-
     this.setState({persons: persons});
   };
 
@@ -59,6 +54,15 @@ class App extends Component {
 
   render() {
 
+    const style = {
+      backgroundColor: 'green',
+      color: 'white',
+      font: 'inherit',
+      border: '1px solid blue',
+      padding: '8px',
+      cursor: 'pointer'
+    };
+
     const charList = this.state.userInput.split('').map((ch, index) => {
       return <Char 
                 character={ch} 
@@ -68,6 +72,7 @@ class App extends Component {
     });
 
     let persons = null;
+
     if (this.state.showPersons) {
       persons = (
         <div>
@@ -84,14 +89,7 @@ class App extends Component {
           }
         </div>
       );
-    };
-
-    const style = {
-      backgroundColor: 'white',
-      font: 'inherit',
-      border: '1px solid blue',
-      padding: '8px',
-      cursor: 'pointer'
+      style.backgroundColor = 'red';
     };
 
     // JSX
