@@ -3,6 +3,21 @@ import './App.css';
 import Person from './Person/Person';
 import Validation from './Validation/Validation';
 import Char from './Char/Char';
+import styled from 'styled-components';
+
+const StyledButton = styled.button`
+  background-color: ${props => props.alt ? 'green' : 'blue'};
+  color: white;
+  font: inherit;
+  border: 1px solid blue;
+  padding: 8px;
+  cursor: pointer;
+  
+  &:hover {
+    background-color: ${props => props.alt ? 'lightgreen' : 'lightblue'};
+    color: black;
+  }
+`;
 
 class App extends Component {
   state = {
@@ -54,19 +69,6 @@ class App extends Component {
 
   render() {
 
-    const style = {
-      backgroundColor: 'green',
-      color: 'white',
-      font: 'inherit',
-      border: '1px solid blue',
-      padding: '8px',
-      cursor: 'pointer',
-      ':hover': {
-        backgroundColor: 'lightgreen',
-        color: 'black',
-      }
-    };
-
     const charList = this.state.userInput.split('').map((ch, index) => {
       return <Char 
                 character={ch} 
@@ -93,11 +95,6 @@ class App extends Component {
           }
         </div>
       );
-      style.backgroundColor = 'blue';
-      style[':hover'] = {
-        backgroundColor: 'lightblue',
-        color: 'black',
-      }
     };
 
     const classes = [];
@@ -113,12 +110,12 @@ class App extends Component {
         <div className="App">
           <h1>Hi, I'm a React App!</h1>
           <p className={classes.join(' ')}>I'm awesome!</p>
-          <button 
-            style={ style }
+          <StyledButton 
+            alt={this.state.showPersons}
             onClick={ this.togglePersonHandler }
           >
             Toggle Ninjas
-          </button>
+          </StyledButton>
           <br/>
           <br/>
           { persons }
@@ -139,4 +136,4 @@ class App extends Component {
   }
 }
 
-export default App;   // higher order cmpnt
+export default App;
